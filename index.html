@@ -22,7 +22,6 @@
     </nav>
 
     <h2 style="margin-top: 28px;">Сравнительная таблица (PageSpeed Insights)</h2>
-    </p>
 
     <div class="table__wrapper">
       <table>
@@ -37,44 +36,74 @@
         <tbody>
           <tr>
             <td><strong>Performance (мобильная)</strong></td>
-            <td>—</td>
-            <td>—</td>
+            <td>94</td>
+            <td>99</td>
             <td>Общая оценка 0–100</td>
           </tr>
           <tr>
-            <td><strong>Performance (десктоп)</strong></td>
-            <td>—</td>
-            <td>—</td>
-            <td>Общая оценка 0–100</td>
-          </tr>
-          <tr>
-            <td>First Contentful Paint (FCP)</td>
-            <td>—</td>
-            <td>—</td>
+            <td>First Contentful Paint (FCP, mobile)</td>
+            <td>0.8</td>
+            <td>0.8</td>
             <td>сек</td>
           </tr>
           <tr>
-            <td>Largest Contentful Paint (LCP)</td>
-            <td>—</td>
-            <td>—</td>
+            <td>Largest Contentful Paint (LCP, mobile)</td>
+            <td>3.2</td>
+            <td>2.0</td>
             <td>сек</td>
           </tr>
           <tr>
-            <td>Total Blocking Time (TBT)</td>
-            <td>—</td>
-            <td>—</td>
+            <td>Total Blocking Time (TBT, mobile)</td>
+            <td>0</td>
+            <td>0</td>
             <td>мс</td>
           </tr>
           <tr>
-            <td>Cumulative Layout Shift (CLS)</td>
-            <td>—</td>
-            <td>—</td>
+            <td>Cumulative Layout Shift (CLS, mobile)</td>
+            <td>0.001</td>
+            <td>0.001</td>
             <td>0–1</td>
           </tr>
           <tr>
-            <td>Speed Index</td>
-            <td>—</td>
-            <td>—</td>
+            <td>Speed Index (mobile)</td>
+            <td>0.8</td>
+            <td>1.2</td>
+            <td>сек</td>
+          </tr>
+          <tr>
+            <td><strong>Performance (десктоп)</strong></td>
+            <td>100</td>
+            <td>100</td>
+            <td>Общая оценка 0–100</td>
+          </tr>
+          <tr>
+            <td>First Contentful Paint (FCP, desktop)</td>
+            <td>0.2</td>
+            <td>0.3</td>
+            <td>сек</td>
+          </tr>
+          <tr>
+            <td>Largest Contentful Paint (LCP, desktop)</td>
+            <td>0.6</td>
+            <td>0.7</td>
+            <td>сек</td>
+          </tr>
+          <tr>
+            <td>Total Blocking Time (TBT, desktop)</td>
+            <td>0</td>
+            <td>0</td>
+            <td>мс</td>
+          </tr>
+          <tr>
+            <td>Cumulative Layout Shift (CLS, desktop)</td>
+            <td>0.001</td>
+            <td>0</td>
+            <td>0–1</td>
+          </tr>
+          <tr>
+            <td>Speed Index (desktop)</td>
+            <td>0.4</td>
+            <td>0.5</td>
             <td>сек</td>
           </tr>
         </tbody>
@@ -86,6 +115,44 @@
       быстрее первая отрисовка (FCP/LCP), меньше блокирующего JS (TBT ≈ 0),
       жёсткие ограничения на CSS/JS, кеширование через AMP Cache при переходе из Google.
       Минусы — ограничения на интерактив и размер amp-custom CSS (≤ 75 КБ).
+    </div>
+
+    <h2 style="margin-top: 28px;">Выводы по замерам</h2>
+
+    <div class="summary" style="margin-top: 10px;">
+      <strong>Mobile — AMP заметно выигрывает.</strong>
+      Общая оценка Performance выросла с 94 до 99. Ключевой вклад — LCP:
+      3.2 с → 2.0 с (улучшение на 1.2 с, ~38%). Это главная метрика Core Web Vitals:
+      обычная версия выходит за «хороший» порог 2.5 с, AMP — укладывается.
+      FCP, TBT и CLS не изменились (0.8 с, 0 мс, 0.001) — обе версии уже хороши по этим метрикам.
+      Единственный проигрыш AMP — Speed Index: 0.8 → 1.2 с. Причина в обязательном
+      рантайме (<code>v0.js</code> + скрипты <code>amp-carousel</code>/<code>amp-sidebar</code>):
+      страница дольше «дособирается» визуально, хотя первый контент и главный блок
+      появляются не хуже. На общую оценку это влияет слабее, чем LCP, поэтому итог всё равно в пользу AMP.
+    </div>
+
+    <div class="summary" style="margin-top: 10px;">
+      <strong>Desktop — паритет.</strong>
+      Обе версии упираются в 100 баллов. По FCP/LCP/Speed Index AMP чуть медленнее
+      (0.2 → 0.3 с, 0.6 → 0.7 с, 0.4 → 0.5 с) — снова за счёт рантайма, но на быстром
+      десктопном соединении и мощном CPU это не влияет на оценку. CLS у AMP даже лучше
+      (0.001 → 0), но разница в пределах погрешности измерения.
+    </div>
+
+    <div class="summary" style="margin-top: 10px;">
+      <strong>Общий вывод.</strong>
+      На мобильных AMP даёт реальный выигрыш — прежде всего за счёт LCP, то есть
+      ускорения загрузки главного контента (в нашем случае — фонового изображения
+      и крупного заголовка hero-блока). Это ожидаемо: AMP-компоненты
+      (<code>amp-img</code>, <code>amp-carousel</code>) применяют lazy-load и
+      приоритизацию «из коробки», а жёсткие ограничения не дают странице
+      «потяжелеть» из-за сторонних скриптов. На десктопе разницы нет, потому что
+      обе версии уже быстрые и упираются в потолок оценки.
+      Плата за выигрыш — рост Speed Index на mobile и небольшие задержки FCP/LCP/SI
+      на desktop из-за обязательного AMP-рантайма, а также ограничения на интерактив
+      и лимит <code>amp-custom</code> CSS (≤ 75 КБ). Для контентной/лендинговой
+      страницы, которая должна быстро открываться с телефона, обмен оправдан;
+      для интерактивного SPA — скорее нет.
     </div>
 
     <h2 style="margin-top: 28px;">Структура проекта</h2>
