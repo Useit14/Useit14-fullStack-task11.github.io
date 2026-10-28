@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Задание 11 — AMP-версия Fudi</title>
+  <link rel="stylesheet" href="./src/styles/base.css" />
+</head>
+
+<body class="page-home">
+  <main class="menu">
+    <h1>Задание 11</h1>
+    <p class="hint">
+      AMP-версия шаблона из задания 4 (Fudi). Сравнение показателей
+      производительности через PageSpeed Insights.
+    </p>
+
+    <nav class="menu__links">
+      <a href="./original/">Обычная версия (оригинал)</a>
+      <a href="./amp/">AMP-версия</a>
+    </nav>
+
+    <h2 style="margin-top: 28px;">Сравнительная таблица (PageSpeed Insights)</h2>
+    </p>
+
+    <div class="table__wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Показатель</th>
+            <th>Обычная версия</th>
+            <th>AMP-версия</th>
+            <th>Примечание</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>First Contentful Paint (FCP)</td>
+            <td>—</td>
+            <td>—</td>
+            <td>сек</td>
+          </tr>
+          <tr>
+            <td>Largest Contentful Paint (LCP)</td>
+            <td>—</td>
+            <td>—</td>
+            <td>сек</td>
+          </tr>
+          <tr>
+            <td>Total Blocking Time (TBT)</td>
+            <td>—</td>
+            <td>—</td>
+            <td>мс</td>
+          </tr>
+          <tr>
+            <td>Cumulative Layout Shift (CLS)</td>
+            <td>—</td>
+            <td>—</td>
+            <td>0–1</td>
+          </tr>
+          <tr>
+            <td>Speed Index</td>
+            <td>—</td>
+            <td>—</td>
+            <td>сек</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="summary" style="margin-top: 20px;">
+      <strong>Что обычно даёт AMP:</strong>
+      быстрее первая отрисовка (FCP/LCP), меньше блокирующего JS (TBT ≈ 0),
+      жёсткие ограничения на CSS/JS, кеширование через AMP Cache при переходе из Google.
+      Минусы — ограничения на интерактив и размер amp-custom CSS (≤ 75 КБ).
+    </div>
+
+    <h2 style="margin-top: 28px;">Структура проекта</h2>
+    <div class="card">
+      <pre style="margin:0; font-size:13px; line-height:1.5; overflow:auto;">task11/
+├── index.html          # это меню + таблица
+├── original/           # обычная адаптивная вёрстка
+│   ├── index.html
+│   ├── style.css
+│   ├── script.js
+│   ├── img/
+│   └── font/
+└── amp/                # AMP-версия
+    ├── index.html
+    ├── img/
+    └── font/</pre>
+    </div>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,269 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #1f2937;
+  background: #f8fafc;
+  padding: 24px;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+h2 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+a {
+  color: #4a90d9;
+  text-decoration: none;
+}
+a:hover {
+  color: #357abd;
+  text-decoration: underline;
+}
+
+/* === Кнопки === */
+button {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    opacity 0.15s;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.btn-primary {
+  background: #4a90d9;
+  color: #fff;
+}
+.btn-primary:hover:not(:disabled) {
+  background: #357abd;
+}
+.btn-danger {
+  background: #ef4444;
+  color: #fff;
+}
+.btn-danger:hover:not(:disabled) {
+  background: #dc2626;
+}
+
+/* === Таблицы === */
+.table__wrapper {
+  margin-top: 10px;
+  overflow-x: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+  background: #fff;
+}
+
+.table__wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table__wrapper thead {
+  background: linear-gradient(135deg, #4a90d9 0%, #357abd 100%);
+  color: #fff;
+}
+
+.table__wrapper th,
+.table__wrapper td {
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.table__wrapper th {
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.table__wrapper tbody tr:nth-child(even) {
+  background: #f9fafb;
+}
+.table__wrapper tbody tr:hover {
+  background: #eef4fb;
+}
+.table__wrapper tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table__wrapper tr.critical {
+  background: #fef2f2 !important;
+}
+.table__wrapper tr.critical td {
+  color: #b91c1c;
+  font-weight: 600;
+}
+.table__wrapper tr.best {
+  background: #f0fdf4 !important;
+}
+
+.table__wrapper tr.extrapolated {
+  background: #fefce8 !important; /* светло-жёлтый — «предсказание» */
+  font-style: italic;
+  color: #92400e;
+}
+.table__wrapper tr.extrapolated small {
+  font-style: normal;
+  font-size: 11px;
+  color: #a16207;
+}
+
+/* === Сводки === */
+.summary {
+  margin-top: 10px;
+  padding: 12px 16px;
+  background: #eef4fb;
+  border-left: 4px solid #4a90d9;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #1f2937;
+}
+.summary strong {
+  color: #357abd;
+}
+
+/* === Меню (главная) === */
+.menu {
+  max-width: 600px;
+}
+.menu__links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+.menu__links a {
+  padding: 12px 16px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  font-weight: 500;
+}
+.menu__links a:hover {
+  background: #eef4fb;
+  border-color: #4a90d9;
+  text-decoration: none;
+}
+
+/* === Общий контейнер для внутренних страниц === */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* === Ссылка «На главную» === */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4a90d9;
+  text-decoration: none;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    color 0.15s;
+}
+.back-link:hover {
+  background: #eef4fb;
+  border-color: #4a90d9;
+  color: #357abd;
+  text-decoration: none;
+}
+.back-link::before {
+  content: "←";
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* === Шапка внутренней страницы === */
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* === Дополнения для задания 11 === */
+.hint {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+.note {
+  background: #fff8f0;
+  border-left: 3px solid #f57365;
+  padding: 12px 16px;
+  margin: 1.2rem 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 14px;
+}
+.card {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 10px 0;
+  background: #fff;
+}
+.card a {
+  font-weight: 600;
+  color: #4a90d9;
+}
+.card a:hover {
+  text-decoration: underline;
+}
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: 8px;
+}
+.badge--amp {
+  background: #0379c4;
+  color: #fff;
+}
+.badge--orig {
+  background: #6b7280;
+  color: #fff;
+}
